@@ -1,0 +1,31 @@
+﻿<Window x:Class="fmanager.win.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:fmanager.win"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.ColumnSpan="2" HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="0" Grid.Column="0">
+            <Button x:Name="ForwardBtn" IsEnabled="{Binding NavigationService.CanGoForward, ElementName=ContentFrame}" Grid.Row="0" Grid.Column="0" Click="FrowardBtn_Click">Forward</Button>
+            <Button x:Name="BackBtn" IsEnabled="{Binding NavigationService.CanGoBack, ElementName=ContentFrame}" Grid.Row="0" Grid.Column="0" Click="BackBtn_Click">Back</Button>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Row="1"  Grid.Column="0">
+            <Button x:Name="ProjectsPage" Click="ProjectsPage_Click">Projects</Button>
+            <Button x:Name="AddProject" Click="AddProject_Click">Add Project</Button>
+            <Button x:Name="Settings" Click="Settings_Click">Settings</Button>
+        </StackPanel>
+        <Frame x:Name="ContentFrame" NavigationUIVisibility="Hidden" Grid.Column="1" Source="Pages/HomePage.xaml" Grid.Row="1" />
+    </Grid>
+
+
+</Window>
