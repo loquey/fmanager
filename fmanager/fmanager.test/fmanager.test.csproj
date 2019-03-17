@@ -61,10 +61,25 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="fmanager.db\RepoistoryTest\ProjectLinkRepositoryTest.cs" />
+    <Compile Include="fmanager.db\RepoistoryTest\ProjectRepositoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\fmanager.db\fmanager.db.csproj">
+      <Project>{fcadfa7e-0881-4670-83f9-5db08abe49f0}</Project>
+      <Name>fmanager.db</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\fmanager.win\fmanager.win.csproj">
+      <Project>{863a4e88-e2cf-414f-bac5-e079153c8816}</Project>
+      <Name>fmanager.win</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="fmanager.win\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

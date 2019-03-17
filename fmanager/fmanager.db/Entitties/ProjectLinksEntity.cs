@@ -6,10 +6,24 @@ using System.Threading.Tasks;
 
 namespace fmanager.db.Entitties
 {
-    public class ProjectLinksEntity
+    /// <summary>
+    /// Entity definition for links associated with a project
+    /// </summary>
+    public class ProjectLinkEntity
     {
-        public ProjectEntity Porject { set; get; }
+        /// <summary>
+        /// Parent project 
+        /// </summary>
+        public ProjectEntity Project { set; get; }
+
+        /// <summary>
+        /// Link descritpion to be displayed to the user 
+        /// </summary>
         public string Description { set; get; }
+
+        /// <summary>
+        /// Link content 
+        /// </summary>
         public string Content { set; get; }
     }
 }
