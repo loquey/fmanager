@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace fmanager.db.Repositories
 {
-    public interface IRepository
+    using db.Entitties;
+
+    public interface IRepository<T> where T : BaseEntity
     {
-        void Add();
-        void Update();
-        void Delete();
-        void Load();
-        void LoadAll();
+        void Add(T entity);
+        void Update(T entity);
+        void Delete(T entity);
+        T Load(Guid guid);
+        IEnumerable<T> LoadAll();
     }
 }

@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace fmanager.db.Repositories
 {
+    using Entitties;
+
     /// <summary>
-    /// Project entity repository
+    ///  Project entity repository
     /// </summary>
-    public class ProjectRepository : IRepository
+    public class ProjectRepository : IRepository<ProjectEntity>
     {
         /// <summary>
         /// Construstor taking dbonnection entity
@@ -19,6 +18,31 @@ namespace fmanager.db.Repositories
         public ProjectRepository(IDbConnection dbconn)
         {
 
+        }
+
+        public void Add(ProjectEntity entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(ProjectEntity entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ProjectEntity Load(Guid guid)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<ProjectEntity> LoadAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(ProjectEntity entity)
+        {
+            throw new NotImplementedException();
         }
     }
 }

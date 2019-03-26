@@ -9,7 +9,7 @@ namespace fmanager.db.Entitties
     /// <summary>
     /// Entity definition for links associated with a project
     /// </summary>
-    public class ProjectLinkEntity
+    public class ProjectLinkEntity : BaseEntity
     {
         /// <summary>
         /// Parent project 

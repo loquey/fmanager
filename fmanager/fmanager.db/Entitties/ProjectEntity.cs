@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace fmanager.db.Entitties
 {
-    public class ProjectEntity
+    public class ProjectEntity : BaseEntity
     {
         /// <summary>
         /// Possible project types

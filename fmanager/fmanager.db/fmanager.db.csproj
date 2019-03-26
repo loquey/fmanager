@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entitties\BaseEntity.cs" />
     <Compile Include="Entitties\ProjectEntity.cs" />
     <Compile Include="Entitties\ProjectLinksEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
