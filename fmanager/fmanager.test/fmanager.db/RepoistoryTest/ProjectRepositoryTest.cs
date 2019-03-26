@@ -8,6 +8,7 @@ namespace fmanager.test.fmanagerdb.RepoistoryTest
 {
     using db.Entitties;
     using db.Repositories;
+    using System.Threading.Tasks;
 
     public class ProjectRepositoryExecuteTest
     {
@@ -30,22 +31,22 @@ namespace fmanager.test.fmanagerdb.RepoistoryTest
         }
 
         [Fact]
-        public void AddNullEntityToRepositoryTest()
+        public async Task AddNullEntityToRepositoryTest()
         {
-            Assert.Throws<ArgumentNullException>(() => _repo.Add(null));
+            await Assert.ThrowsAsync<ArgumentNullException>(() => _repo.Add(null));
         }
 
         [Fact]
         public void DeleteEntityFromRepositoryTest(Action<ProjectEntity> method)
         {
-            _repo.Delete(new ProjectEntity);
+            _repo.Delete(new ProjectEntity());
             _dbconnMock.Verify(pe => pe.Execute(It.IsAny<string>(), It.IsAny<object>(), null, null, null), Times.Once());
         }
 
         [Fact]
-        public void DeleteEntityFromRepositoryWithNullEntityTest()
+        public async Task DeleteEntityFromRepositoryWithNullEntityTest()
         {
-            Assert.Throws<ArgumentNullException>(() => _repo.Delete(null));
+            await Assert.ThrowsAsync<ArgumentNullException>(() => _repo.Delete(null));
         }
 
         [Fact]
@@ -56,9 +57,9 @@ namespace fmanager.test.fmanagerdb.RepoistoryTest
         }
 
         [Fact]
-        public void UpdateEntityWithNullEntityTest()
+        public async Task UpdateEntityWithNullEntityTest()
         {
-            Assert.Throws<ArgumentNullException>(() => _repo.Update(null));
+            await Assert.ThrowsAsync<ArgumentNullException>(() => _repo.Update(null));
         }
     }
 }

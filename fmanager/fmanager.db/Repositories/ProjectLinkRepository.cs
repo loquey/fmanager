@@ -4,6 +4,8 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Dapper;
+using Dapper.Contrib.Extensions;
 
 namespace fmanager.db.Repositories
 {
@@ -11,16 +13,16 @@ namespace fmanager.db.Repositories
     /// <summary>
     /// Project link repository
     /// </summary>
-    public class ProjectLinkRepository : IRepository<ProjectLinkEntity>
+    public class ProjectLinkRepository : AbstractRepository<ProjectLinkEntity>
     {
-        private IDbConnection _dbconn;
-       
+
         /// <summary>
         /// Constructor accepting database connection
         /// </summary>
         /// <param name="dbconn">Database connection</param>
         public ProjectLinkRepository(IDbConnection dbconn)
+            :base(dbconn)
         {
-            _dbconn = dbconn;
         }
+    }
 }

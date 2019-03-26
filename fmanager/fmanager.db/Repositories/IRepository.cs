@@ -10,10 +10,10 @@ namespace fmanager.db.Repositories
 
     public interface IRepository<T> where T : BaseEntity
     {
-        void Add(T entity);
-        void Update(T entity);
-        void Delete(T entity);
-        T Load(Guid guid);
-        IEnumerable<T> LoadAll();
+        Task<int> Add(T entity);
+        Task<bool> Update(T entity);
+        Task<bool> Delete(T entity);
+        Task<T> Load(Guid guid);
+        Task<IEnumerable<T>> LoadAll();
     }
 }

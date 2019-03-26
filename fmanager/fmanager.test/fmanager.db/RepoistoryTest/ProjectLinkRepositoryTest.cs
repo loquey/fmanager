@@ -4,6 +4,7 @@ using fmanager.db.Repositories;
 using Moq;
 using System;
 using System.Data;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace fmanager.test.fmanagerdb.RepoistoryTest
@@ -29,9 +30,9 @@ namespace fmanager.test.fmanagerdb.RepoistoryTest
         }
 
         [Fact]
-        public void AddNullEntityToRepositoryTest()
+        public async Task AddNullEntityToRepositoryTest()
         {
-            Assert.Throws<ArgumentNullException>(() => _repo.Add(null));
+            await Assert.ThrowsAsync<ArgumentNullException>(() => _repo.Add(null));
         }
 
         [Fact]
@@ -42,9 +43,9 @@ namespace fmanager.test.fmanagerdb.RepoistoryTest
         }
 
         [Fact]
-        public void DeleteEntityFromRepositoryWithNullEntityTest()
+        public async Task DeleteEntityFromRepositoryWithNullEntityTest()
         {
-            Assert.Throws<ArgumentNullException>(() => _repo.Delete(null));
+            await Assert.ThrowsAsync<ArgumentNullException>(() => _repo.Delete(null));
         }
 
         [Fact]
@@ -55,9 +56,9 @@ namespace fmanager.test.fmanagerdb.RepoistoryTest
         }
 
         [Fact]
-        public void UpdateEntityWithNullEntityTest()
+        public async Task UpdateEntityWithNullEntityTest()
         {
-            Assert.Throws<ArgumentNullException>(() => _repo.Update(null));
+            await Assert.ThrowsAsync<ArgumentNullException>(() => _repo.Update(null));
         }
         
 
