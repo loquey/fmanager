@@ -13,5 +13,17 @@ namespace fmanager.win
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            Console.WriteLine("On startup event");
+        }
+
+        protected override void OnExit(ExitEventArgs e)
+        {
+            base.OnExit(e);
+            Console.WriteLine("On exit event");
+
+        }
     }
 }
