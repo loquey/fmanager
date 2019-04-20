@@ -32,7 +32,7 @@ namespace fmanager.test.fmanagerdb.RepoistoryTest
         [Fact]
         public async Task AddNullEntityToRepositoryTest()
         {
-            await Assert.ThrowsAsync<ArgumentNullException>(() => _Repo.Add(null));
+            await Assert.ThrowsAsync<ArgumentNullException>(() => _Repo.Add((ProjectLinkEntity)null));
         }
 
         [Fact]

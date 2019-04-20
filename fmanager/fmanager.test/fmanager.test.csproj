@@ -85,6 +85,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="fmanager.db\DriverTest\SQLiteFactoryTest.cs" />
     <Compile Include="fmanager.db\RepoistoryTest\ProjectLinkRepositoryEntityLoadTest.cs" />
     <Compile Include="fmanager.db\RepoistoryTest\ProjectLinkRepositoryTest.cs" />
     <Compile Include="fmanager.db\RepoistoryTest\ProjectRepositoryEntityLoadTest.cs" />

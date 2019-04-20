@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dapper.Contrib.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,16 +7,18 @@ using System.Threading.Tasks;
 
 namespace fmanager.db.Entitties
 {
+    [Table("Projects")]
     public class ProjectEntity : BaseEntity
     {
         /// <summary>
         /// Possible project types
         /// </summary>
+       
         public enum ProjectTypeEnum
         {
-            ios, 
-            android,
-            other,
+            ios = 0, 
+            android = 1,
+            other = 2,
         }
 
         /// <summary>
@@ -36,6 +39,8 @@ namespace fmanager.db.Entitties
         /// <summary>
         /// List of associted links 
         /// </summary>
+        [Write(false)]
+        [Computed]
         public ICollection<ProjectLinkEntity> ProjectLinks { set; get; }
 
 

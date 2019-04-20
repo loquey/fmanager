@@ -24,7 +24,7 @@
             <Button x:Name="AddProject" Click="AddProject_Click">Add Project</Button>
             <Button x:Name="Settings" Click="Settings_Click">Settings</Button>
         </StackPanel>
-        <Frame x:Name="ContentFrame" NavigationUIVisibility="Hidden" Grid.Column="1" Source="Pages/HomePage.xaml" Grid.Row="1" />
+        <Frame x:Name="ContentFrame" NavigationUIVisibility="Hidden" Grid.Column="1" Source="Views/Pages/HomePage.xaml" Grid.Row="1" />
     </Grid>
 
 

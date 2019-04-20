@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dapper.Contrib.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,7 @@ namespace fmanager.db.Entitties
     /// <summary>
     /// Entity definition for links associated with a project
     /// </summary>
+    [Table("ProjectLinks")]
     public class ProjectLinkEntity : BaseEntity
     {
         /// <summary>

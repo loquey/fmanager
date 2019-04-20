@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Dapper;
 using Dapper.Contrib.Extensions;
+using Dapper.Contrib;
 using System.Data; 
 
 namespace fmanager.db.Repositories
@@ -30,12 +31,17 @@ namespace fmanager.db.Repositories
         /// </summary>
         /// <param name="entity">Entity to be added</param>
         /// <returns>Number of entity added</returns>
-        virtual public async Task<int> Add(T entity)
+        async virtual public Task<int> Add(T entity)
         {
             if (entity == null)
                 throw new ArgumentNullException("entity");
 
             return await _dbconn.InsertAsync<T>(entity);
+        }
+
+        async public Task<long> Add(IEnumerable<T> entities)
+        {
+            return await _dbconn.InsertAsync<IEnumerable<T>>(entities);
         }
 
 
@@ -84,5 +90,6 @@ namespace fmanager.db.Repositories
 
             return await _dbconn.UpdateAsync<T>(entity);
         }
+        
     }
 }

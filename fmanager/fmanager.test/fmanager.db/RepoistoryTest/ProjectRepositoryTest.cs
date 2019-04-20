@@ -13,53 +13,53 @@ namespace fmanager.test.fmanagerdb.RepoistoryTest
     public class ProjectRepositoryExecuteTest
     {
 
-        private Mock<IDbConnection> _dbconnMock;
-        private IRepository<ProjectEntity> _repo;
+        private Mock<IDbConnection> _DbconnMock;
+        private IRepository<ProjectEntity> _Repo;
 
         public ProjectRepositoryExecuteTest()
         {
-            _dbconnMock = new Mock<IDbConnection>();
-            _dbconnMock.Setup(moq => moq.Execute(It.IsAny<string>(), It.IsAny<ProjectEntity>(), null, null, null)).Returns(1);
-            _repo = new ProjectRepository(_dbconnMock.Object);
+            _DbconnMock = new Mock<IDbConnection>();
+            _DbconnMock.Setup(moq => moq.Execute(It.IsAny<string>(), It.IsAny<ProjectEntity>(), null, null, null)).Returns(1);
+            _Repo = new ProjectRepository(_DbconnMock.Object);
         }
 
         [Fact]
         public void AddEntityToRepositoryTest()
         {
-            _repo.Add(new ProjectEntity());
-            _dbconnMock.Verify(pe => pe.Execute(It.IsAny<string>(), It.IsAny<ProjectEntity>(), null, null, null), Times.Once());
+            _Repo.Add(new ProjectEntity());
+            _DbconnMock.Verify(pe => pe.Execute(It.IsAny<string>(), It.IsAny<ProjectEntity>(), null, null, null), Times.Once());
         }
 
         [Fact]
         public async Task AddNullEntityToRepositoryTest()
         {
-            await Assert.ThrowsAsync<ArgumentNullException>(() => _repo.Add(null));
+            await Assert.ThrowsAsync<ArgumentNullException>(() => _Repo.Add((ProjectEntity)null));
         }
 
         [Fact]
         public void DeleteEntityFromRepositoryTest(Action<ProjectEntity> method)
         {
-            _repo.Delete(new ProjectEntity());
-            _dbconnMock.Verify(pe => pe.Execute(It.IsAny<string>(), It.IsAny<object>(), null, null, null), Times.Once());
+            _Repo.Delete(new ProjectEntity());
+            _DbconnMock.Verify(pe => pe.Execute(It.IsAny<string>(), It.IsAny<object>(), null, null, null), Times.Once());
         }
 
         [Fact]
         public async Task DeleteEntityFromRepositoryWithNullEntityTest()
         {
-            await Assert.ThrowsAsync<ArgumentNullException>(() => _repo.Delete(null));
+            await Assert.ThrowsAsync<ArgumentNullException>(() => _Repo.Delete(null));
         }
 
         [Fact]
         public void UpdateEntityInRepository()
         {
-            _repo.Update(new ProjectEntity());
-            _dbconnMock.Verify(pe => pe.Execute(It.IsAny<string>(), It.IsAny<object>(), null, null, null), Times.Once());
+            _Repo.Update(new ProjectEntity());
+            _DbconnMock.Verify(pe => pe.Execute(It.IsAny<string>(), It.IsAny<object>(), null, null, null), Times.Once());
         }
 
         [Fact]
         public async Task UpdateEntityWithNullEntityTest()
         {
-            await Assert.ThrowsAsync<ArgumentNullException>(() => _repo.Update(null));
+            await Assert.ThrowsAsync<ArgumentNullException>(() => _Repo.Update(null));
         }
     }
 }

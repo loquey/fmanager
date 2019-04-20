@@ -11,6 +11,7 @@ namespace fmanager.db.Repositories
     public interface IRepository<T> where T : BaseEntity
     {
         Task<int> Add(T entity);
+        Task<long> Add(IEnumerable<T> entities);
         Task<bool> Update(T entity);
         Task<bool> Delete(T entity);
         Task<T> Load(Guid guid);

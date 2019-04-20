@@ -1,0 +1,19 @@
+﻿Todo: 
+- setup nlog for logging 
+	- review various nlog setup 
+- setup builder for project links 
+	- usin nbuilder persistent with dapper 
+- Update unit test for repositories 
+- write unite test sqlitefactory 
+- read catching exceptions in async methods 
+- review existing code for cleanup 
+- star from the home screen menu 
+
+
+
+
+Working with sqlite for Dapper 
+Prerequisite: 
+	- Create db file or load existing db file 
+	- create sqlconnection object with new file 
+	- 

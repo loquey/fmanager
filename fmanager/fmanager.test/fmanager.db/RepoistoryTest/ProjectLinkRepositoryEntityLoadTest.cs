@@ -16,30 +16,30 @@ namespace fmanager.test.fmanagerdb.RepoistoryTest
 
     public class ProjectLinkRepositoryEntityLoadTest
     {
-        private Mock<IDbConnection> _dbconn;
-        private IRepository<ProjectLinkEntity> _repo;
+        private Mock<IDbConnection> _Dbconn;
+        private IRepository<ProjectLinkEntity> _Repo;
 
         public ProjectLinkRepositoryEntityLoadTest()
         {
             var result = Builder<ProjectLinkEntity>.CreateListOfSize(3).Build();
-            _dbconn = new Mock<IDbConnection>();
-            _dbconn.Setup(moq => moq.Query<ProjectLinkEntity>(It.IsAny<string>(), It.IsAny<object>(), null, true, null, null)).Returns(result);
-            _dbconn.Setup(moq => moq.QueryFirst<ProjectLinkEntity>(It.IsAny<string>(), It.IsAny<object>(), null, null, null)).Returns(result.FirstOrDefault());
-            _repo = new ProjectLinkRepository(_dbconn.Object);
+            _Dbconn = new Mock<IDbConnection>();
+            _Dbconn.Setup(moq => moq.Query<ProjectLinkEntity>(It.IsAny<string>(), It.IsAny<object>(), null, true, null, null)).Returns(result);
+            _Dbconn.Setup(moq => moq.QueryFirst<ProjectLinkEntity>(It.IsAny<string>(), It.IsAny<object>(), null, null, null)).Returns(result.FirstOrDefault());
+            _Repo = new ProjectLinkRepository(_Dbconn.Object);
 
         }
         [Fact]
         public void LoadAllProductEntityTest()
         {
-            _repo.LoadAll();
-            _dbconn.Verify(moq => moq.Query<ProjectLinkEntity>(It.IsAny<string>(), It.IsAny<object>(), null, true, null, null));
+            _Repo.LoadAll();
+            _Dbconn.Verify(moq => moq.Query<ProjectLinkEntity>(It.IsAny<string>(), It.IsAny<object>(), null, true, null, null));
         }
 
         [Fact]
         public void LoadProductEntityTest()
         {
-            _repo.Load(Guid.NewGuid());
-            _dbconn.Verify(moq => moq.QueryFirst<ProjectLinkEntity>(It.IsAny<string>(), It.IsAny<object>(), null, null, null));
+            _Repo.Load(Guid.NewGuid());
+            _Dbconn.Verify(moq => moq.QueryFirst<ProjectLinkEntity>(It.IsAny<string>(), It.IsAny<object>(), null, null, null));
         }
     }
 }

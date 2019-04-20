@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dapper.Contrib.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,7 @@ namespace fmanager.db.Entitties
         /// <summary>
         /// Unique identifier
         /// </summary>
-        public Guid Id { get; set; }
+        [Key]
+        public int Rowid { get; set; }
     }
 }
