@@ -47,6 +47,7 @@ namespace fmanager.win
             //}
             ILogger logger = diContainer.Resolve<ILogger>();
             logger.Info("info message, testing logging");
+            logger.Debug("{shopitem} added to basket by {user}", new { Id = 6, Name = "Jacket", Color = "Orange" }, "Kenny");
 
         }
 

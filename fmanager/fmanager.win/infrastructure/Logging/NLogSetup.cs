@@ -25,7 +25,7 @@ namespace fmanager.win.infrastructure.Logging
                 EnableArchiveFileCompression = true,
                 KeepFileOpen = true, 
                 OpenFileCacheTimeout = 30,
-                Layout = "[${longDate:universalTime=true}] ${level:upperCase=true} - ${message} | ${callsite:className=true:includeNamespace=true:fileName=true}",
+                Layout = "[${longDate:universalTime=true}] ${level:upperCase=true:padding=5} - ${message} - ${callsite:className=true:includeNamespace=true:fileName=true}",
             };
 
             config.AddTarget(fileTarget);
