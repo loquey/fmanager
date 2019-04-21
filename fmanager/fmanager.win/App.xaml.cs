@@ -3,12 +3,14 @@ using Castle.Windsor.Installer;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows;
+using NLog;
 
 namespace fmanager.win
 {
     using db.Driver;
     using db.Entitties;
     using db.Repositories;
+    using infrastructure.Logging;
 
     /// <summary>
     /// Interaction logic for App.xaml
@@ -28,6 +30,8 @@ namespace fmanager.win
         {
             base.OnStartup(e);
 
+            NLogSetup.Setup();
+
             var diContainer = new WindsorContainer();
             diContainer.Install(FromAssembly.This());
             Resources[ResourceKeys.DIContrainer] = diContainer;
@@ -41,6 +45,8 @@ namespace fmanager.win
                 //SQLiteFactory.InitTables(dbConn);
                 SQLiteFactory.SeedTables(diContainer.Resolve<IRepository<ProjectEntity>>(), diContainer.Resolve<IRepository<ProjectLinkEntity>>());
             //}
+            ILogger logger = diContainer.Resolve<ILogger>();
+            logger.Info("info message, testing logging");
 
         }
 
