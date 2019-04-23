@@ -43,11 +43,8 @@ namespace fmanager.win
             IDbConnection dbConn = diContainer.Resolve<IDbConnection>(new[] { new KeyValuePair<string, object>("connectionString", connectionString) });
             //if (status) {
                 //SQLiteFactory.InitTables(dbConn);
-                SQLiteFactory.SeedTables(diContainer.Resolve<IRepository<ProjectEntity>>(), diContainer.Resolve<IRepository<ProjectLinkEntity>>());
+                //SQLiteFactory.SeedTables(diContainer.Resolve<IRepository<ProjectEntity>>(), diContainer.Resolve<IRepository<ProjectLinkEntity>>());
             //}
-            ILogger logger = diContainer.Resolve<ILogger>();
-            logger.Info("info message, testing logging");
-            logger.Debug("{shopitem} added to basket by {user}", new { Id = 6, Name = "Jacket", Color = "Orange" }, "Kenny");
 
         }
 

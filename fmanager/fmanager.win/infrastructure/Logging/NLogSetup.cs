@@ -30,6 +30,7 @@ namespace fmanager.win.infrastructure.Logging
 
             config.AddTarget(fileTarget);
             config.AddRuleForAllLevels(fileTarget);
+            
             LogManager.ThrowConfigExceptions = true;
             LogManager.Configuration = config;
 

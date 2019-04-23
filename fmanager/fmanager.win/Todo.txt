@@ -1,6 +1,4 @@
 ﻿Todo: 
-- setup nlog for logging 
-	- review various nlog setup 
 - setup builder for project links 
 	- usin nbuilder persistent with dapper 
 - Update unit test for repositories 
@@ -15,5 +13,5 @@
 Working with sqlite for Dapper 
 Prerequisite: 
 	- Create db file or load existing db file 
-	- create sqlconnection object with new file 
+	- Create sqlconnection object with new file 
 	- 

@@ -40,7 +40,6 @@ namespace fmanager.db.Entitties
         /// List of associted links 
         /// </summary>
         [Write(false)]
-        [Computed]
         public ICollection<ProjectLinkEntity> ProjectLinks { set; get; }
 
 

@@ -8,6 +8,7 @@ namespace fmanager.db.Driver
 {
     using Entitties;
     using Repositories;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Factory for sqlite setup
@@ -52,13 +53,20 @@ namespace fmanager.db.Driver
 
         static public void SeedTables(IRepository<ProjectEntity> projectRepo, IRepository<ProjectLinkEntity> projectLinkRepo)
         {
-            var projects = Builder<ProjectEntity>.CreateListOfSize(2)
+            var projects = Builder<ProjectEntity>.CreateListOfSize(4)
                             .All()
                                 .With(c => c.ProjectName = Faker.Company.Name())
                                 .With(c => c.ProjectType = Faker.Enum.Random<ProjectEntity.ProjectTypeEnum>())
                                 .With(c => c.FilePath = Path.GetTempPath())
                             .Build();
-            projectRepo.Add(projects);
+
+            BuilderSetup.SetCreatePersistenceMethod<IList<ProjectLinkEntity>>((pl) => projectLinkRepo.Add(pl));
+            var projectLinks = Builder<ProjectLinkEntity>.CreateListOfSize(15)
+                                .All()
+                                    .With(p => p.Content = Faker.Lorem.Sentence(3))
+                                    .With(p => p.Description = Faker.Lorem.Sentence(4))
+                                    .With(p => p.ProjectID = Pick<ProjectEntity>.RandomItemFrom(projects).Id)
+                                 .Persist();
         }
 
     }

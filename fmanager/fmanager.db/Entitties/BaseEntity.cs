@@ -16,6 +16,6 @@ namespace fmanager.db.Entitties
         /// Unique identifier
         /// </summary>
         [Key]
-        public int Rowid { get; set; }
+        public int Id { get; set; }
     }
 }

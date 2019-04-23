@@ -16,6 +16,7 @@ namespace fmanager.db.Entitties
         /// <summary>
         /// Parent project 
         /// </summary>
+        [Write(false)]
         public ProjectEntity Project { set; get; }
 
         /// <summary>
@@ -27,5 +28,10 @@ namespace fmanager.db.Entitties
         /// Link content 
         /// </summary>
         public string Content { set; get; }
+
+        /// <summary>
+        /// Linked project ID
+        /// </summary>
+        public int ProjectID { set; get; }
     }
 }
