@@ -19,7 +19,7 @@ namespace fmanager.test.fmanagerdb.RepoistoryTest
         {
             var result = Builder<ProjectEntity>.CreateListOfSize(3).Build();
             _Dbconn = new Mock<IDbConnection>();
-            _Dbconn.Setup(moq => moq.Query<ProjectEntity>(It.IsAny<string>(), It.IsAny<object>(), null, true, null, null)).Returns(result);
+            //_Dbconn.Setup(moq => moq.Query<ProjectEntity>(It.IsAny<string>(), It.IsAny<object>(), null, true, null, null)).Returns(1);
             _Dbconn.Setup(moq => moq.QueryFirst<ProjectEntity>(It.IsAny<string>(), It.IsAny<object>(), null, null, null)).Returns(result.FirstOrDefault());
             _Repo = new ProjectRepository(_Dbconn.Object);
         }
@@ -34,7 +34,7 @@ namespace fmanager.test.fmanagerdb.RepoistoryTest
         [Fact]
         public void LoadProductEntityTest()
         {
-            _Repo.Load(Guid.NewGuid());
+            _Repo.Load(1);
             _Dbconn.Verify(moq => moq.QueryFirst<ProjectEntity>(It.IsAny<string>(), It.IsAny<object>(), null, null, null));
         }
     }

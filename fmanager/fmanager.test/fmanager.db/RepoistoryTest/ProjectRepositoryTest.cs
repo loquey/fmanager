@@ -30,6 +30,12 @@ namespace fmanager.test.fmanagerdb.RepoistoryTest
             _DbconnMock.Verify(pe => pe.Execute(It.IsAny<string>(), It.IsAny<ProjectEntity>(), null, null, null), Times.Once());
         }
 
+        //[Fact]
+        //public void AddListOfEntitiesTest()
+        //{
+        //    _Repo(A)
+        //}
+
         [Fact]
         public async Task AddNullEntityToRepositoryTest()
         {

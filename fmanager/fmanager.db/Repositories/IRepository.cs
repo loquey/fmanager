@@ -14,7 +14,7 @@ namespace fmanager.db.Repositories
         Task<long> Add(IEnumerable<T> entities);
         Task<bool> Update(T entity);
         Task<bool> Delete(T entity);
-        Task<T> Load(Guid guid);
+        Task<T> Load(int id);
         Task<IEnumerable<T>> LoadAll();
     }
 }

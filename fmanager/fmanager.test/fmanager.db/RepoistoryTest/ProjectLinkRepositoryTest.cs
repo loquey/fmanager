@@ -23,6 +23,7 @@ namespace fmanager.test.fmanagerdb.RepoistoryTest
         }
 
         [Fact]
+
         public void AddEntityToRepositoryTest()
         {
             _Repo.Add(new ProjectLinkEntity());

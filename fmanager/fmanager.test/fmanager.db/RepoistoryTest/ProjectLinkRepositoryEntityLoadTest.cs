@@ -1,18 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Dapper;
+using Dapper.Contrib.Extensions;
+using FizzWare.NBuilder;
+using Moq;
+using System;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Dapper;
-using Moq;
 using Xunit;
-using FizzWare.NBuilder; 
 
 namespace fmanager.test.fmanagerdb.RepoistoryTest
 {
     using db.Entitties;
-    using db.Repositories; 
+    using db.Repositories;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
 
     public class ProjectLinkRepositoryEntityLoadTest
     {
@@ -21,25 +21,38 @@ namespace fmanager.test.fmanagerdb.RepoistoryTest
 
         public ProjectLinkRepositoryEntityLoadTest()
         {
-            var result = Builder<ProjectLinkEntity>.CreateListOfSize(3).Build();
             _Dbconn = new Mock<IDbConnection>();
-            _Dbconn.Setup(moq => moq.Query<ProjectLinkEntity>(It.IsAny<string>(), It.IsAny<object>(), null, true, null, null)).Returns(result);
-            _Dbconn.Setup(moq => moq.QueryFirst<ProjectLinkEntity>(It.IsAny<string>(), It.IsAny<object>(), null, null, null)).Returns(result.FirstOrDefault());
             _Repo = new ProjectLinkRepository(_Dbconn.Object);
 
         }
         [Fact]
-        public void LoadAllProductEntityTest()
+        public void LoadAllProjectLinkEntityTest()
         {
+            var result = Builder<ProjectLinkEntity>.CreateListOfSize(3).Build();
+            var getAllTask = new TaskCompletionSource<IEnumerable<ProjectLinkEntity>>();
+            getAllTask.SetResult(result);
+
+            _Dbconn.Setup(moq => moq.GetAllAsync<ProjectLinkEntity>(null, null)).Returns(getAllTask.Task);
+
             _Repo.LoadAll();
-            _Dbconn.Verify(moq => moq.Query<ProjectLinkEntity>(It.IsAny<string>(), It.IsAny<object>(), null, true, null, null));
+            _Dbconn.Verify(moq => moq.GetAllAsync<ProjectLinkEntity>(null, null));
         }
 
         [Fact]
-        public void LoadProductEntityTest()
+        public void LoadProjectLinkEntityTest()
         {
-            _Repo.Load(Guid.NewGuid());
-            _Dbconn.Verify(moq => moq.QueryFirst<ProjectLinkEntity>(It.IsAny<string>(), It.IsAny<object>(), null, null, null));
+            //Arrange
+            var result = Builder<ProjectLinkEntity>.CreateNew().Build();33
+            var getTask = new TaskCompletionSource<ProjectLinkEntity>();
+            getTask.SetResult(result);
+            _Dbconn.Setup(moq => moq.GetAsync<ProjectLinkEntity>(It.IsAny<int>(), null, null)).Returns(getTask.Task);
+
+            _Repo.Load(1);
+
+            _Dbconn.Verify(moq => moq.GetAsync<ProjectLinkEntity>(It.IsAny<int>(), null, null));
+
+
+            
         }
     }
 }

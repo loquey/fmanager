@@ -13,7 +13,7 @@ namespace fmanager.db.Driver
     /// <summary>
     /// Factory for sqlite setup
     /// </summary>
-    public class SQLiteFactory
+    static public class SQLiteFactory
     {
         public static bool CreateDbIfNotExist(string filePath)
         {
